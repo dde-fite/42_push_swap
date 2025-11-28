@@ -1,0 +1,3 @@
+[submodule "lib/Libft"]
+	path = lib/Libft
+	url = https://github.com/dde-fite/42_libft.git
