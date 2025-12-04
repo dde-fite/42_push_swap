@@ -6,7 +6,7 @@
 #    By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 17:35:03 by dde-fite          #+#    #+#              #
-#    Updated: 2025/11/28 18:31:19 by dde-fite         ###   ########.fr        #
+#    Updated: 2025/12/04 15:51:14 by dde-fite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC_FOLDER		= src
 SRCB_FOLDER		= srcb
 INCLUDE_FOLDER	= include
 BUILD_FOLDER	= build
-LIBFT_FOLDER	= lib
+LIBFT_FOLDER	= lib/Libft_printf
 SRC				:= $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 OBJ				:= $(patsubst $(SRC_FOLDER)/%.c,$(BUILD_FOLDER)/%.o,$(SRC))
 SRCB			:= $(addprefix $(SRCB_FOLDER)/, $(SRCB_FILES))
@@ -36,7 +36,7 @@ TOTALB			:= $(words $(SRCB))
 
 # GCC COMPILER
 CC				= cc
-CFLAGS			= -Wall -Werror -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}
+CFLAGS			= -Wall -Werror -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}/include -O3 -march=native -fno-semantic-interposition -fno-plt
 DEBUGFLAGS		= -fdiagnostics-color=always -g -Wall -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}
 
 # AR LIBRARY
@@ -151,8 +151,7 @@ ${LIBFT_FOLDER}/libft.a:
 
 update_modules:
 	@echo "Updating submodules ..."
-	@git submodule init
-	@git submodule update --recursive --remote
+	@git submodule update --init --recursive --remote
 	@echo "Submodules successfully updated"
 
 get_libft: update_modules
