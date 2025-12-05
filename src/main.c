@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:37:15 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/05 20:21:23 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/05 20:50:11 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	*initialize_stacks(t_stack **lst, char *argv[])
 
 	while (*argv)
 	{
-		_tmp = **argv;
+		_tmp = *argv;
 		while (*_tmp)
 		{
-			if (ft_isdigit(_tmp))
+			if (ft_isdigit(*_tmp))
 			{
 				_lst = lstnew(ft_atoi(_tmp));
 				if (!_lst)

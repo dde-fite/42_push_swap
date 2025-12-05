@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/05 20:23:55 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/05 20:51:10 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@
 
 typedef struct s_stack
 {
-	int		number;
-	int		cost;
-	t_stack	*target;
-	t_stack	*prev;
-	t_stack	*next;
+	int				number;
+	int				cost;
+	struct s_stack	*target;
+	struct s_stack	*prev;
+	struct s_stack	*next;
 }	t_stack;
 
 int		parsing_error(void);
@@ -49,7 +49,7 @@ void	lstclear(t_stack **lst);
 void	lstiter(t_stack *lst, void (*f)(void *));
 t_stack	*lstlast(t_stack *lst);
 t_stack	*lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *));
-t_stack	*lstnew(void *content);
+t_stack	*lstnew(int number);
 int		lstsize(t_stack *lst);
 
 #endif
