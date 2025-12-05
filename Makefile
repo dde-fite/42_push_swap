@@ -6,7 +6,7 @@
 #    By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 17:35:03 by dde-fite          #+#    #+#              #
-#    Updated: 2025/12/05 20:33:16 by dde-fite         ###   ########.fr        #
+#    Updated: 2025/12/05 20:44:32 by dde-fite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ SHELL := /bin/bash
 
 # FILES
 NAME			= push_swap
-SRC_FILES		=
-
+SRC_FILES		= main.c utils/lstnew.c utils/lstadd_back.c utils/lstsize.c \
+					utils/lstadd_front.c utils/lstclear.c utils/lstdelone.c \
+					utils/lstmap.c utils/lstiter.c utils/lstlast.c
 SRCB_FILES		:=
 SRC_FOLDER		= src
 SRCB_FOLDER		= srcb
@@ -36,17 +37,14 @@ TOTALB			:= $(words $(SRCB))
 
 # GCC COMPILER
 CC				= cc
-CFLAGS			= -Wall -Werror -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}/include -O3 -march=native -fno-semantic-interposition -fno-plt
+CFLAGS			= -Wall -Werror -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}/include -I${LIBFT_FOLDER}/libft -O3 -march=native -fno-semantic-interposition -fno-plt
+CFLAGS_OBJ		= $(CFLAGS) -c
+CFLAGS_LINK		= $(CFLAGS) -o $(NAME)
 DEBUGFLAGS		= -fdiagnostics-color=always -g -Wall -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}
-
-# AR LIBRARY
-AR				= ar
-AFLAGS			= rs
 
 # COMMANDS
 RM				= rm
 MKDIR			= mkdir
-CP				= cp
 
 # COLORS
 GREEN			:= \033[1;32m
@@ -83,7 +81,7 @@ ${NAME}: ${LIBFT_FOLDER}/libft.a ${SRC}
 	@echo -e "Compiling push_swap files ...\n${YELLOW}"
 	@count=0; \
 	for file in ${SRC_FILES}; do \
-		${CC} ${CFLAGS} -o ${BUILD_FOLDER}/$${file%.c}.o ${SRC_FOLDER}/$$file; \
+		${CC} ${CFLAGS_OBJ} -o ${BUILD_FOLDER}/$${file%.c}.o ${SRC_FOLDER}/$$file; \
 		count=$$((count + 1)); \
 		progress=$$((count * 100 / ${TOTAL})); \
 		hashes_len=$$((progress * ${BAR_LEN} / 100)); \
@@ -93,11 +91,9 @@ ${NAME}: ${LIBFT_FOLDER}/libft.a ${SRC}
 		printf "\r[%s%s] %d%%" "$$hashes" "$$spaces" "$$progress"; \
 	done; \
 	echo
-	@echo -e "${RESET}\nCloning libft binary ...\n"
-	@${CP} ${LIBFT_FOLDER}/libft.a ${NAME}
-	@echo "Archiving objects in ${NAME} ..."
+	@echo "Linking objects in ${NAME} ..."
 	@echo ""
-	@${AR} ${AFLAGS} ${NAME} ${OBJ}
+	@${CC} ${CFLAGS_OBJ} ${LIBFT_FOLDER}/libft.a  ${OBJ}
 	@echo -e "${GREEN}Process completed :)${RESET}\n"
 
 bonus: .bonus
