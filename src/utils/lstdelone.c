@@ -6,13 +6,13 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:36:43 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/04 18:57:24 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:57:31 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstdelone(t_stack *lst, void (*del)(void*))
+void	lstdelone(t_stack *lst, void (*del)(void*))
 {
 	del(lst->content);
 	free(lst);

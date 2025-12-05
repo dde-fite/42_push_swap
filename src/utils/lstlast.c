@@ -6,13 +6,13 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:21:40 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/04 18:57:24 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:59:44 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_lstlast(t_stack *lst)
+t_stack	*lstlast(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);

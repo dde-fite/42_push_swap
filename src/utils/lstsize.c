@@ -6,13 +6,13 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:13:45 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/04 18:57:24 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:00:17 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstsize(t_stack *lst)
+int	lstsize(t_stack *lst)
 {
 	unsigned int	i;
 
