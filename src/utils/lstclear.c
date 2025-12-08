@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 18:18:56 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/05 20:23:18 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/08 18:47:01 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	lstclear(t_stack **lst)
 	while (*lst)
 	{
 		nxtlst = (*lst)->next;
-		free(lst);
+		free(*lst);
 		*lst = nxtlst;
 	}
 }

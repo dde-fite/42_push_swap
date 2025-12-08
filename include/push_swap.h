@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/05 20:51:10 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/08 19:16:22 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,24 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_global
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		len;
+}	t_global;
+
 int		parsing_error(void);
-int		memory_error(t_stack *lst);
+int		memory_error(t_global *stacks);
+
+int		initialize_stacks(t_global *stacks, char *argv[]);
 
 void	lstadd_back(t_stack **lst, t_stack *new);
 void	lstadd_front(t_stack **lst, t_stack *new);
 void	lstclear(t_stack **lst);
-void	lstiter(t_stack *lst, void (*f)(void *));
 t_stack	*lstlast(t_stack *lst);
-t_stack	*lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *));
 t_stack	*lstnew(int number);
 int		lstsize(t_stack *lst);
+void	lstdelone(t_stack *lst);
 
 #endif

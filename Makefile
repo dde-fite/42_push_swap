@@ -6,7 +6,7 @@
 #    By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 17:35:03 by dde-fite          #+#    #+#              #
-#    Updated: 2025/12/05 20:44:32 by dde-fite         ###   ########.fr        #
+#    Updated: 2025/12/08 19:26:36 by dde-fite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,14 @@ SHELL := /bin/bash
 NAME			= push_swap
 SRC_FILES		= main.c utils/lstnew.c utils/lstadd_back.c utils/lstsize.c \
 					utils/lstadd_front.c utils/lstclear.c utils/lstdelone.c \
-					utils/lstmap.c utils/lstiter.c utils/lstlast.c
+					utils/lstlast.c utils/error_handling.c
 SRCB_FILES		:=
 SRC_FOLDER		= src
 SRCB_FOLDER		= srcb
 INCLUDE_FOLDER	= include
 BUILD_FOLDER	= build
 LIBFT_FOLDER	= lib/Libft_printf
+LIBFT_LIBRARY	= libftprintf.a
 SRC				:= $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 OBJ				:= $(patsubst $(SRC_FOLDER)/%.c,$(BUILD_FOLDER)/%.o,$(SRC))
 SRCB			:= $(addprefix $(SRCB_FOLDER)/, $(SRCB_FILES))
@@ -40,7 +41,7 @@ CC				= cc
 CFLAGS			= -Wall -Werror -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}/include -I${LIBFT_FOLDER}/libft -O3 -march=native -fno-semantic-interposition -fno-plt
 CFLAGS_OBJ		= $(CFLAGS) -c
 CFLAGS_LINK		= $(CFLAGS) -o $(NAME)
-DEBUGFLAGS		= -fdiagnostics-color=always -g -Wall -Wextra -I$(INCLUDE_FOLDER) -I${LIBFT_FOLDER}
+DEBUGFLAGS		= -fdiagnostics-color=always -g
 
 # COMMANDS
 RM				= rm
@@ -93,7 +94,42 @@ ${NAME}: ${LIBFT_FOLDER}/libft.a ${SRC}
 	echo
 	@echo "Linking objects in ${NAME} ..."
 	@echo ""
-	@${CC} ${CFLAGS_OBJ} ${LIBFT_FOLDER}/libft.a  ${OBJ}
+	@${CC} ${CFLAGS_LINK} ${OBJ} ${LIBFT_FOLDER}/${LIBFT_LIBRARY}
+	@echo -e "${GREEN}Process completed :)${RESET}\n"
+
+
+debug: ${LIBFT_FOLDER}/libft.a ${SRC}
+	@echo -e "\n${PURPLE}"
+	@echo "                         __                                                        "
+	@echo "                        /\ \                                                       "
+	@echo "  _____   __  __    ____\ \ \___              ____  __  __  __     __     _____    "
+	@echo " /\ ·__·\/\ \/\ \  /·,__\\ \  _ ·\           /·,__\/\ \/\ \/\ \  /·__·\  /\ ·__·\  "
+	@echo " \ \ \L\ \ \ \_\ \/\__, ·\\ \ \ \ \         /\__, ·\ \ \_/ \_/ \/\ \L\.\_\ \ \L\ \ "
+	@echo "  \ \ ,__/\ \____/\/\____/ \ \_\ \_\        \/\____/\ \___x___/'\ \__/.\_\\ \ ,__/ "
+	@echo "   \ \ \/  \/___/  \/___/   \/_/\/_/  _______\/___/  \/__/__/    \/__/\/_/ \ \ \/  "
+	@echo "    \ \_\                            /\______\                              \ \_\  "
+	@echo "     \/_/                            \/______/                               \/_/  "
+	@echo -e "${RED}"
+	@echo "                                    by dde-fite                                    "
+	@echo -e "${RESET}Creating build folder if does not exist ...\n"
+	@${MKDIR} -p ${BUILD_FOLDER}
+	@${MKDIR} -p ${dir $(OBJ)}
+	@echo -e "Compiling push_swap files ...\n${YELLOW}"
+	@count=0; \
+	for file in ${SRC_FILES}; do \
+		${CC} ${CFLAGS_OBJ} ${DEBUGFLAGS} -o ${BUILD_FOLDER}/$${file%.c}.o ${SRC_FOLDER}/$$file; \
+		count=$$((count + 1)); \
+		progress=$$((count * 100 / ${TOTAL})); \
+		hashes_len=$$((progress * ${BAR_LEN} / 100)); \
+		hashes=$$(printf '%0.s#' $$(seq 1 $$hashes_len)); \
+		spaces_len=$$((BAR_LEN - hashes_len)); \
+		spaces=$$(printf '%0.s ' $$(seq 1 $$spaces_len)); \
+		printf "\r[%s%s] %d%%" "$$hashes" "$$spaces" "$$progress"; \
+	done; \
+	echo
+	@echo "Linking objects in ${NAME} ..."
+	@echo ""
+	@${CC} ${CFLAGS_LINK} ${DEBUGFLAGS} ${OBJ} ${LIBFT_FOLDER}/${LIBFT_LIBRARY}
 	@echo -e "${GREEN}Process completed :)${RESET}\n"
 
 bonus: .bonus

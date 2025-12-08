@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug build_push_swap",
+            "args": ["4", "0 0 7 9 88", "5", "353"],
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/push_swap",
+            "cwd": "${workspaceFolder}/",
+            "stopAtEntry": false,
+            "preLaunchTask": "build_push_swap",
+            "MIMode": "gdb"
+        }
+    ]
+}
