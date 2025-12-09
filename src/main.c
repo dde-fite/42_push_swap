@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:37:15 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/08 20:01:33 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/09 21:39:27 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,32 +76,40 @@ int	is_ordered(t_stack *lst)
 	return (1);
 }
 
-void	method_switch(t_global *global_stacks)
-{
-	if (is_ordered(global_stacks->stack_a))
-		return ;
-	if (global_stacks->len == 3)
-	{
-		
-	}
-	if (global_stacks->len == 5)
-	{
-		
-	}
-	else
-	{
-		
-	}
-}
+// void	method_switch(t_global *global_stacks)
+// {
+// 	if (is_ordered(global_stacks->stack_a))
+// 		return ;
+// 	if (global_stacks->len == 3)
+// 	{
+// 		sort_three(global_stacks->stack_a)
+// 	}
+// 	if (global_stacks->len == 5)
+// 	{
+// 	}
+// 	else
+// 	{
+// 	}
+// }
+
+// void	sort_three(t_stack *stack)
+// {
+// }
 
 int	main(int argc, char *argv[])
 {
 	t_global	global_stacks;
 
 	if (argc < 3)
-		return (parsing_error());
+		return (0);
 	if (initialize_stacks(&global_stacks, argv + 1))
 		return (-1);
-	method_switch(&global_stacks);
+	// method_switch(&global_stacks);
+	sa(&global_stacks.stack_a);
+	while (global_stacks.stack_a)
+	{
+		ft_printf("%d\n", global_stacks.stack_a->number);
+		global_stacks.stack_a = global_stacks.stack_a->next;
+	}
 	return (0);
 }

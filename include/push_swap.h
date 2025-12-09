@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/08 19:16:22 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/09 21:58:41 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@
 // # include <stdio.h>
 
 # define ERROR_MESSAGE "Error\n"
+# define SWAP_A "sa\n"
+# define SWAP_B "sb\n"
+# define SWAP_BOTH "ss\n"
+# define PUSH_A "pa\n"
+# define PUSH_B "pb\n"
+# define ROTATE_A "ra\n"
+# define ROTATE_B "rb\n"
+# define ROTATE_BOTH "rr\n"
+# define REV_ROTATE_A "rra\n"
+# define REV_ROTATE_B "rrb\n"
+# define REV_ROTATE_BOTH "rrr\n"
 
 /* ******************** STRUCTS, TYPES, OTHER STATEMENTS ******************** */
 
@@ -36,7 +47,6 @@ typedef struct s_stack
 	int				number;
 	int				cost;
 	struct s_stack	*target;
-	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -47,10 +57,20 @@ typedef struct s_global
 	int		len;
 }	t_global;
 
+/* ******************** ERROR HANDLING ******************** */
+
 int		parsing_error(void);
 int		memory_error(t_global *stacks);
 
 int		initialize_stacks(t_global *stacks, char *argv[]);
+
+/* ******************** OPERATIONS ******************** */
+
+void	sa(t_stack **stack_a);
+void	sb(t_stack **stack_b);
+void	ss(t_global *global_stacks);
+
+/* ******************** UTILS ******************** */
 
 void	lstadd_back(t_stack **lst, t_stack *new);
 void	lstadd_front(t_stack **lst, t_stack *new);

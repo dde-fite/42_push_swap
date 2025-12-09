@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstnew.c                                           :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 15:45:41 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/09 21:34:28 by dde-fite         ###   ########.fr       */
+/*   Created: 2025/12/09 21:59:02 by dde-fite          #+#    #+#             */
+/*   Updated: 2025/12/09 22:34:34 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*lstnew(int number)
+static void	push(t_stack **from, t_stack **dest)
 {
-	t_stack	*lst;
+	t_stack	*_tmp;
 
-	lst = malloc(sizeof(t_stack));
-	if (!lst)
-		return (NULL);
-	lst->number = number;
-	lst->cost = 0;
-	lst->target = NULL;
-	lst->next = NULL;
-	return (lst);
+	if (!from || !dest)
+		return ;
+	_tmp = *from;
+	
+}
+
+void	pa(t_global *global_stacks)
+{
+	push(global_stacks);
+	ft_printf("%s", PUSH_A);
+}
+
+void	pb(t_global *global_stacks)
+{
+	push(global_stacks);
+	ft_printf("%s", PUSH_B);
 }
