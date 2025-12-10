@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 20:21:49 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/10 19:31:36 by dde-fite         ###   ########.fr       */
+/*   Created: 2025/12/10 19:10:51 by dde-fite          #+#    #+#             */
+/*   Updated: 2025/12/10 19:44:13 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	swap(t_stack **stack)
+static int	rotate(t_stack **stack)
 {
 	t_stack	*_tmp;
 
 	if (!*stack || !(*stack)->next)
 		return (-1);
-	_tmp = *stack;
-	*stack = (*stack)->next;
-	_tmp->next = (*stack)->next;
-	(*stack)->next = _tmp;
+	_tmp = (*stack)->next;
+	(*stack)->next = NULL;
+	lstadd_back(&_tmp, *stack);
+	*stack = _tmp;
 	return (0);
 }
 
-void	sa(t_stack **stack_a)
+void	ra(t_stack **stack_a)
 {
-	if (!swap(stack_a))
-		ft_printf(SWAP_A);
+	if (!rotate(stack_a))
+		ft_printf(ROTATE_A);
 }
 
-void	sb(t_stack **stack_b)
+void	rb(t_stack **stack_b)
 {
-	if (!swap(stack_b))
-		ft_printf(SWAP_B);
+	if (!rotate(stack_b))
+		ft_printf(ROTATE_B);
 }
 
-void	ss(t_global *global_stacks)
+void	rr(t_global *global_stacks)
 {
-	if (!swap(&global_stacks->stack_a) && !swap(&global_stacks->stack_b))
-		ft_printf(SWAP_BOTH);
+	if (!rotate(&global_stacks->stack_a) && !rotate(&global_stacks->stack_b))
+		ft_printf(ROTATE_BOTH);
 }

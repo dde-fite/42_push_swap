@@ -6,7 +6,7 @@
 #    By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 17:35:03 by dde-fite          #+#    #+#              #
-#    Updated: 2025/12/09 21:37:11 by dde-fite         ###   ########.fr        #
+#    Updated: 2025/12/10 20:41:20 by dde-fite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,10 @@ SHELL := /bin/bash
 NAME			= push_swap
 SRC_FILES		= main.c utils/lstnew.c utils/lstadd_back.c utils/lstsize.c \
 					utils/lstadd_front.c utils/lstclear.c utils/lstdelone.c \
-					utils/lstlast.c utils/error_handling.c \
-					operations/swap.c
+					utils/lstlast.c utils/print_stacks.c \
+					helpers/error_handling.c operations/swap.c \
+					operations/push.c operations/rotate.c \
+					operations/revrotate.c
 SRCB_FILES		:=
 SRC_FOLDER		= src
 SRCB_FOLDER		= srcb

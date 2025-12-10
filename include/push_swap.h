@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/09 21:58:41 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/10 20:00:40 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ int		initialize_stacks(t_global *stacks, char *argv[]);
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
 void	ss(t_global *global_stacks);
+void	pa(t_global *global_stacks);
+void	pb(t_global *global_stacks);
+void	ra(t_stack **stack_a);
+void	rb(t_stack **stack_b);
+void	rr(t_global *global_stacks);
+void	rra(t_stack **stack_a);
+void	rrb(t_stack **stack_b);
+void	rrr(t_global *global_stacks);
 
 /* ******************** UTILS ******************** */
 
@@ -79,5 +87,7 @@ t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int number);
 int		lstsize(t_stack *lst);
 void	lstdelone(t_stack *lst);
+
+void	print_stack(t_global *global_stacks);
 
 #endif

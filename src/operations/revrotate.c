@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   revrotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 20:21:49 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/10 19:31:36 by dde-fite         ###   ########.fr       */
+/*   Created: 2025/12/10 19:10:51 by dde-fite          #+#    #+#             */
+/*   Updated: 2025/12/10 20:52:30 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	swap(t_stack **stack)
+static int	revrotate(t_stack **stack)
 {
 	t_stack	*_tmp;
 
 	if (!*stack || !(*stack)->next)
 		return (-1);
 	_tmp = *stack;
-	*stack = (*stack)->next;
-	_tmp->next = (*stack)->next;
-	(*stack)->next = _tmp;
+	while (_tmp->next->next)
+		_tmp = _tmp->next;
+	lstadd_front(stack, lstlast(*stack));
+	_tmp->next = NULL;
 	return (0);
 }
 
-void	sa(t_stack **stack_a)
+void	rra(t_stack **stack_a)
 {
-	if (!swap(stack_a))
-		ft_printf(SWAP_A);
+	if (!revrotate(stack_a))
+		ft_printf(REV_ROTATE_A);
 }
 
-void	sb(t_stack **stack_b)
+void	rrb(t_stack **stack_b)
 {
-	if (!swap(stack_b))
-		ft_printf(SWAP_B);
+	if (!revrotate(stack_b))
+		ft_printf(REV_ROTATE_B);
 }
 
-void	ss(t_global *global_stacks)
+void	rrr(t_global *global_stacks)
 {
-	if (!swap(&global_stacks->stack_a) && !swap(&global_stacks->stack_b))
-		ft_printf(SWAP_BOTH);
+	if (!revrotate(&global_stacks->stack_a)
+		&& !revrotate(&global_stacks->stack_b))
+		ft_printf(REV_ROTATE_BOTH);
 }
