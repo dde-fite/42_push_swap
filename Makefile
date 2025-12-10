@@ -6,7 +6,7 @@
 #    By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 17:35:03 by dde-fite          #+#    #+#              #
-#    Updated: 2025/12/10 20:41:20 by dde-fite         ###   ########.fr        #
+#    Updated: 2025/12/10 21:25:33 by dde-fite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_FILES		= main.c utils/lstnew.c utils/lstadd_back.c utils/lstsize.c \
 					utils/lstlast.c utils/print_stacks.c \
 					helpers/error_handling.c operations/swap.c \
 					operations/push.c operations/rotate.c \
-					operations/revrotate.c
+					operations/revrotate.c sorting/methods.c
 SRCB_FILES		:=
 SRC_FOLDER		= src
 SRCB_FOLDER		= srcb

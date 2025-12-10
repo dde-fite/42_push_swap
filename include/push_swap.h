@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/10 20:00:40 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/10 21:24:58 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int		memory_error(t_global *stacks);
 int		initialize_stacks(t_global *stacks, char *argv[]);
 
 /* ******************** OPERATIONS ******************** */
+void	method_switch(t_global *global_stacks);
 
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);

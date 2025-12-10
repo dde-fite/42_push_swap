@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Debug build_push_swap",
-            "args": ["5", "6", "4", "65"],
+            "args": ["20 4 0"],
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/push_swap",

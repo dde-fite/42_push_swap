@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:37:15 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/10 20:48:47 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/10 21:49:49 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ int	initialize_stacks(t_global *stacks, char *argv[])
 			if (ft_isdigit(*_tmp) || ((*_tmp == '-' || *_tmp == '+')
 					&& ft_isdigit(*(_tmp + 1))))
 			{
-				nbr = ft_atoi(_tmp);
-				if (nbr > INT_MAX || is_reapeated(stacks->stack_a, nbr))
+				nbr = ft_atol(_tmp);
+				if (nbr > INT_MAX || nbr < INT_MIN
+					|| is_reapeated(stacks->stack_a, nbr))
 					return (memory_error(stacks));
 				_lst = lstnew(nbr);
 				if (!_lst)
@@ -68,39 +69,6 @@ int	initialize_stacks(t_global *stacks, char *argv[])
 	return (0);
 }
 
-int	is_ordered(t_stack *lst)
-{
-	if (!lst)
-		return (0);
-	while (lst && lst->next)
-	{
-		if (lst->number > lst->next->number)
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
-}
-
-// void	method_switch(t_global *global_stacks)
-// {
-// 	if (is_ordered(global_stacks->stack_a))
-// 		return ;
-// 	if (global_stacks->len == 3)
-// 	{
-// 		sort_three(global_stacks->stack_a)
-// 	}
-// 	if (global_stacks->len == 5)
-// 	{
-// 	}
-// 	else
-// 	{
-// 	}
-// }
-
-// void	sort_three(t_stack *stack)
-// {
-// }
-
 int	main(int argc, char *argv[])
 {
 	t_global	global_stacks;
@@ -111,8 +79,10 @@ int	main(int argc, char *argv[])
 		return (-1);
 	if (lstsize(global_stacks.stack_a) < 2)
 		return (0);
-	// method_switch(&global_stacks);
-	rra(&global_stacks.stack_a);
+	method_switch(&global_stacks);
+	// rra(&global_stacks.stack_a);
 	print_stack(&global_stacks);
+	lstclear(&global_stacks.stack_a);
+	lstclear(&global_stacks.stack_b);
 	return (0);
 }
