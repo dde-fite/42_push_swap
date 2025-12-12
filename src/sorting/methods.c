@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 20:55:53 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/12 16:31:09 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/12 21:29:53 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,21 @@ static void	sort_five(t_global *global_stacks)
 	pa(global_stacks);
 }
 
+static void	turk_algorithim(t_global *global_stacks)
+{
+	push_nolis_to_b(global_stacks);
+	if (global_stacks->error)
+		return ;
+}
+
 void	method_switch(t_global *global_stacks)
 {
-	const size_t	len = lstsize(global_stacks->stack_a);
-
 	if (is_ordered(global_stacks->stack_a))
 		return ;
-	if (len == 3)
+	if (global_stacks->len == 3)
 		sort_three(&global_stacks->stack_a);
-	if (len == 5)
+	if (global_stacks->len == 5)
 		sort_five(global_stacks);
-	// else
-	// {
-	// }
+	else
+		turk_algorithim(global_stacks);
 }

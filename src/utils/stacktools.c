@@ -6,11 +6,21 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:32:46 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/12 16:35:10 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/12 17:25:14 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack	*get_by_index(t_stack *stack, int idx)
+{
+	while (stack && idx >= 0)
+	{
+		stack = stack->next;
+		idx--;
+	}
+	return (stack);
+}
 
 int	get_index(t_stack *stack, t_stack *node)
 {

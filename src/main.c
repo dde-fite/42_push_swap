@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:37:15 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/12 16:40:16 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/12 21:30:52 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	initialize_stacks(t_global *stacks, char *argv[])
 
 	stacks->stack_a = NULL;
 	stacks->stack_b = NULL;
+	stacks->error = false;
 	while (*argv)
 	{
 		_tmp = *argv;
@@ -81,6 +82,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	method_switch(&global_stacks);
 	print_stack(&global_stacks);
+	if (global_stacks.error)
+		return (memory_error(&global_stacks));
 	lstclear(&global_stacks.stack_a);
 	lstclear(&global_stacks.stack_b);
 	return (0);
