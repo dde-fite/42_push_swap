@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 20:55:53 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/10 22:14:08 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/12 16:31:09 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,31 @@ static void	sort_three(t_stack **stack)
 	}
 }
 
+static void	move_to_head(t_stack **stack, t_stack *node)
+{
+	int const	half_point = lstsize(*stack) / 2;
+	int			node_idx;
+
+	node_idx = get_index(*stack, node);
+	while (node_idx != 0)
+	{
+		if (node_idx < half_point)
+			ra(stack);
+		else
+			rra(stack);
+		node_idx = get_index(*stack, node);
+	}
+}
+
 static void	sort_five(t_global *global_stacks)
 {
+	move_to_head(&global_stacks->stack_a, get_min_node(global_stacks->stack_a));
 	pb(global_stacks);
+	move_to_head(&global_stacks->stack_a, get_min_node(global_stacks->stack_a));
 	pb(global_stacks);
 	sort_three(&global_stacks->stack_a);
-	if (global_stacks->stack_b->number > global_stacks->stack_b->next->number)
-		sb(global_stacks->stack_b);
+	pa(global_stacks);
+	pa(global_stacks);
 }
 
 void	method_switch(t_global *global_stacks)

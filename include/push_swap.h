@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/10 21:24:58 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/12 16:19:54 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	rrr(t_global *global_stacks);
 
 /* ******************** UTILS ******************** */
 
+int		get_index(t_stack *stack, t_stack *node);
+t_stack	*get_min_node(t_stack *stack);
 void	lstadd_back(t_stack **lst, t_stack *new);
 void	lstadd_front(t_stack **lst, t_stack *new);
 void	lstclear(t_stack **lst);

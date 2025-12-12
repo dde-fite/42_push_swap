@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:37:15 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/10 21:49:49 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/12 16:40:16 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int	main(int argc, char *argv[])
 	if (lstsize(global_stacks.stack_a) < 2)
 		return (0);
 	method_switch(&global_stacks);
-	// rra(&global_stacks.stack_a);
 	print_stack(&global_stacks);
 	lstclear(&global_stacks.stack_a);
 	lstclear(&global_stacks.stack_b);
