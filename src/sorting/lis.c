@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 17:27:05 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/13 23:10:06 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/15 19:41:58 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,45 +29,40 @@ static t_stack	*get_lis(t_stack *stack, bool *error)
 	i = 0;
 	while (i < stack_size)
 	{
-		_stack = get_by_index(stack, i);
+		_stack = get_by_index(stack, i++);
 		acc = INT_MIN;
 		while (_stack)
 		{
-			if (_stack->number > acc)
-			{
+			if (_stack->number > acc || (lis[i - 1] && !lis[i - 1]++))
 				acc = _stack->number;
-				lis[i]++;
-			}
 			_stack = _stack->next;
 		}
-		i++;
 	}
-	return (get_by_index(stack,
-			(int)(lis - get_max_arr_value(lis))));
+	return (free(lis), get_by_index(stack, (lis - get_max_arr_value(lis))));
 }
 
 void	push_nolis_to_b(t_global *global_stacks)
 {
 	t_stack const	*lis = get_lis(global_stacks->stack_a,
 			&global_stacks->error);
-	t_stack			*_stack_a;
 	int				acc;
+	int				i;
 
 	if (!lis)
 		return ;
-	_stack_a = global_stacks->stack_a;
-	while (_stack_a && _stack_a != lis)
-	{
+	while (global_stacks->stack_a != lis)
 		pb(global_stacks);
-		_stack_a = _stack_a->next;
-	}
 	acc = INT_MIN;
-	while (_stack_a)
+	i = 0;
+	while (i < global_stacks->len)
 	{
-		if (_stack_a->number > acc)
-			acc = _stack_a->number;
+		if (global_stacks->stack_a->number > acc)
+		{
+			acc = global_stacks->stack_a->number;
+			ra(&global_stacks->stack_a);
+		}
 		else
 			pb(global_stacks);
-		_stack_a = _stack_a->next;
+		i++;
 	}
 }
