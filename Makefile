@@ -6,7 +6,7 @@
 #    By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 17:35:03 by dde-fite          #+#    #+#              #
-#    Updated: 2025/12/17 18:14:26 by dde-fite         ###   ########.fr        #
+#    Updated: 2025/12/17 21:20:03 by dde-fite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC_FILES		= main.c utils/lstnew.c utils/lstadd_back.c utils/lstsize.c \
 					operations/push.c operations/rotate.c \
 					operations/revrotate.c sorting/methods.c \
 					utils/stack_tools.c utils/stack_tools2.c \
-					sorting/turk_algorithm.c
+					sorting/turk_algorithm.c parsing.c
 SRCB_FILES		:=
 SRC_FOLDER		= src
 SRCB_FOLDER		= srcb

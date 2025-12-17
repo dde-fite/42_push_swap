@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:41:26 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 21:15:53 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:52:12 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,7 @@ static void	calculate_costs(t_stack *stack)
 
 static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 {
-	while (global_stacks->stack_a != node
-		|| global_stacks->stack_b != node->target)
+	while (node->cost || node->target->cost)
 	{
 		if ((node->cost > 0
 				&& node->target->cost > 0))
@@ -118,7 +117,9 @@ static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 		else if (node->target->cost > 0)
 			rb(&global_stacks->stack_b);
 		else if (node->target->cost < 0)
-			rrb(&global_stacks->stack_a->target);
+			rrb(&global_stacks->stack_b);
+		calculate_costs(global_stacks->stack_a);
+		calculate_costs(global_stacks->stack_b);
 	}
 }
 
@@ -134,12 +135,10 @@ void	turk_algorithm(t_global *global_stacks)
 		mov_to_head_double(global_stacks,
 			seek_cheapest_combination(global_stacks->stack_a));
 		pb(global_stacks);
-		print_stack(global_stacks);
 	}
 	sort_three(&global_stacks->stack_a);
 	while (global_stacks->stack_b)
 	{
-		print_stack(global_stacks);
 		set_targets_b(global_stacks->stack_a, global_stacks->stack_b);
 		move_to_head(&global_stacks->stack_a, global_stacks->stack_b->target);
 		pa(global_stacks);
