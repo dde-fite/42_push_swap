@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 02:12:42 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:48:22 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int		initialize_stacks(t_global *stacks, char *argv[]);
 void	method_switch(t_global *global_stacks);
 void	turk_algorithm(t_global *global_stacks);
 
+void	sort_three(t_stack **stack);
+
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
 void	ss(t_global *global_stacks);
@@ -82,6 +84,7 @@ void	rrr(t_global *global_stacks);
 
 /* ******************** UTILS ******************** */
 
+t_stack	*get_max_node(t_stack *stack);
 void	move_to_head(t_stack **stack, t_stack *node);
 int		is_ordered(t_stack *lst);
 int		*get_max_arr_value(int *arr);

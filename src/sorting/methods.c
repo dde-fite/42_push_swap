@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 20:55:53 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 02:01:07 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:48:03 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	sort_two(t_stack **stack)
 		sa(stack);
 }
 
-static void	sort_three(t_stack **stack)
+void	sort_three(t_stack **stack)
 {
 	while (!is_ordered(*stack))
 	{

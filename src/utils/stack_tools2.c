@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_tools.c                                      :+:      :+:    :+:   */
+/*   stack_tools2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 18:52:49 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 00:06:45 by dde-fite         ###   ########.fr       */
+/*   Created: 2025/12/17 18:12:04 by dde-fite          #+#    #+#             */
+/*   Updated: 2025/12/17 18:13:49 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*get_max_arr_value(int *arr)
+t_stack	*get_max_node(t_stack *stack)
 {
-	int	*acc;
+	t_stack	*acc_stack;
 
-	acc = arr;
-	while (*arr)
+	acc_stack = stack;
+	while (stack)
 	{
-		if (*acc < *arr)
-			acc = arr;
-		arr++;
+		if (stack->number > acc_stack->number)
+			acc_stack = stack;
+		stack = stack->next;
 	}
-	return (acc);
+	return ((t_stack *)acc_stack);
 }
