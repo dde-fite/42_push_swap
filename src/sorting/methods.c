@@ -6,11 +6,17 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 20:55:53 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/15 20:41:43 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/17 02:01:07 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	sort_two(t_stack **stack)
+{
+	if (!is_ordered(*stack))
+		sa(stack);
+}
 
 static void	sort_three(t_stack **stack)
 {
@@ -38,10 +44,12 @@ void	method_switch(t_global *global_stacks)
 {
 	if (is_ordered(global_stacks->stack_a))
 		return ;
-	if (global_stacks->len == 3)
+	if (global_stacks->len == 2)
+		sort_two(&global_stacks->stack_a);
+	else if (global_stacks->len == 3)
 		sort_three(&global_stacks->stack_a);
-	if (global_stacks->len == 5)
+	else if (global_stacks->len == 5)
 		sort_five(global_stacks);
 	else
-		turk_algorithim(global_stacks);
+		turk_algorithm(global_stacks);
 }

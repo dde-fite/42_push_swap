@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/15 21:30:31 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/17 02:12:42 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 typedef struct s_stack
 {
 	int				number;
-	size_t			cost;
+	int				cost;
 	struct s_stack	*target;
 	struct s_stack	*next;
 }	t_stack;
@@ -55,19 +55,18 @@ typedef struct s_global
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		len;
-	bool	error;
 }	t_global;
 
 /* ******************** ERROR HANDLING ******************** */
 
-int		parsing_error(void);
-int		memory_error(t_global *stacks);
+void	parsing_error(void);
+void	cleanup_error(t_global *stacks);
 
 int		initialize_stacks(t_global *stacks, char *argv[]);
 
 /* ******************** OPERATIONS ******************** */
 void	method_switch(t_global *global_stacks);
-void	turk_algorithim(t_global *global_stacks);
+void	turk_algorithm(t_global *global_stacks);
 
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
@@ -86,7 +85,6 @@ void	rrr(t_global *global_stacks);
 void	move_to_head(t_stack **stack, t_stack *node);
 int		is_ordered(t_stack *lst);
 int		*get_max_arr_value(int *arr);
-void	push_nolis_to_b(t_global *global_stacks);
 t_stack	*get_by_index(t_stack *stack, int idx);
 int		get_index(t_stack *stack, t_stack *node);
 t_stack	*get_min_node(t_stack *stack);

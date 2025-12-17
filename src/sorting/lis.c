@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 17:27:05 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/15 19:41:58 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/17 01:00:36 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ static t_stack	*get_lis(t_stack *stack, bool *error)
 			_stack = _stack->next;
 		}
 	}
-	return (free(lis), get_by_index(stack, (lis - get_max_arr_value(lis))));
+	_stack = get_by_index(stack, (lis - get_max_arr_value(lis)));
+	return (free(lis), _stack);
 }
 
-void	push_nolis_to_b(t_global *global_stacks)
+
+void	push_lis_to_b(t_global *global_stacks)
 {
 	t_stack const	*lis = get_lis(global_stacks->stack_a,
 			&global_stacks->error);
@@ -51,7 +53,7 @@ void	push_nolis_to_b(t_global *global_stacks)
 	if (!lis)
 		return ;
 	while (global_stacks->stack_a != lis)
-		pb(global_stacks);
+		ra(&global_stacks->stack_a);
 	acc = INT_MIN;
 	i = 0;
 	while (i < global_stacks->len)
@@ -59,10 +61,10 @@ void	push_nolis_to_b(t_global *global_stacks)
 		if (global_stacks->stack_a->number > acc)
 		{
 			acc = global_stacks->stack_a->number;
-			ra(&global_stacks->stack_a);
+			pb(global_stacks);
 		}
 		else
-			pb(global_stacks);
+			ra(&global_stacks->stack_a);
 		i++;
 	}
 }

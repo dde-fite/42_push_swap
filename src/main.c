@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:37:15 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/12 21:30:52 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/17 02:11:42 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	initialize_stacks(t_global *stacks, char *argv[])
 
 	stacks->stack_a = NULL;
 	stacks->stack_b = NULL;
-	stacks->error = false;
 	while (*argv)
 	{
 		_tmp = *argv;
@@ -45,22 +44,22 @@ int	initialize_stacks(t_global *stacks, char *argv[])
 				nbr = ft_atol(_tmp);
 				if (nbr > INT_MAX || nbr < INT_MIN
 					|| is_reapeated(stacks->stack_a, nbr))
-					return (memory_error(stacks));
+					cleanup_error(stacks);
 				_lst = lstnew(nbr);
 				if (!_lst)
-					return (memory_error(stacks));
+					cleanup_error(stacks);
 				lstadd_back(&stacks->stack_a, _lst);
 				if (*_tmp == '-' || *_tmp == '+')
 					_tmp++;
 				while (*_tmp && ft_isdigit(*_tmp))
 					_tmp++;
 				if (*_tmp == '-' || *_tmp == '+')
-					return (memory_error(stacks));
+					cleanup_error(stacks);
 			}
 			else
 			{
 				if (!ft_isspace(*_tmp))
-					return (memory_error(stacks));
+					cleanup_error(stacks);
 				_tmp++;
 			}
 		}
@@ -82,8 +81,6 @@ int	main(int argc, char *argv[])
 		return (0);
 	method_switch(&global_stacks);
 	print_stack(&global_stacks);
-	if (global_stacks.error)
-		return (memory_error(&global_stacks));
 	lstclear(&global_stacks.stack_a);
 	lstclear(&global_stacks.stack_b);
 	return (0);
