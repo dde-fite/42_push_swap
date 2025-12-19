@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:30:52 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 20:31:10 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 21:39:23 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ void	mov_to_head_double(t_global *stacks, t_stack *node)
 {
 	while (node->cost || node->target->cost)
 	{
-		if ((node->cost > 0
-				&& node->target->cost > 0))
+		if (node->cost > 0 && node->target->cost > 0)
 			rr(stacks);
-		else if (node->cost < 0
-			&& node->target->cost < 0)
+		else if (node->cost < 0 && node->target->cost < 0)
 			rrr(stacks);
 		else if (node->cost > 0)
 			ra(&stacks->stack_a);
