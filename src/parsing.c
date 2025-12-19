@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:17:46 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 17:05:49 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 21:32:59 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	is_reapeated(t_stack *lst, int nbr)
 	return (0);
 }
 
-static int	normalize_input(t_global *global_stacks, char *str)
+static int	parse_input(t_global *global_stacks, char *str)
 {
 	long	nbr;
 
@@ -51,31 +51,31 @@ static int	normalize_input(t_global *global_stacks, char *str)
 	return (nbr);
 }
 
-void	initialize_stacks(t_global *stacks, char *argv[])
+static void	goto_end_of_nbr(t_global *stacks, char **str)
+{
+	if (ft_issign(**str))
+		(*str)++;
+	while (**str && ft_isdigit(**str))
+		(*str)++;
+	if (ft_issign(**str))
+		cleanup_error(stacks);
+}
+
+void	populate_stacks(t_global *stacks, char *argv[])
 {
 	t_stack	*last;
 	char	*_tmp;
 
-	stacks->stack_a = NULL;
-	stacks->stack_b = NULL;
-	stacks->len_a = 0;
-	stacks->len_b = 0;
 	last = NULL;
 	while (*argv)
 	{
 		_tmp = *argv;
 		while (*_tmp)
 		{
-			if (ft_isdigit(*_tmp) || ((*_tmp == '-' || *_tmp == '+')
-					&& ft_isdigit(*(_tmp + 1))))
+			if (ft_isdigit(*_tmp) || (ft_issign(*_tmp) && ft_isdigit(_tmp[1])))
 			{
-				add_to_stack(stacks, &last, normalize_input(stacks, _tmp));
-				if (*_tmp == '-' || *_tmp == '+')
-					_tmp++;
-				while (*_tmp && ft_isdigit(*_tmp))
-					_tmp++;
-				if (*_tmp == '-' || *_tmp == '+')
-					cleanup_error(stacks);
+				add_to_stack(stacks, &last, parse_input(stacks, _tmp));
+				goto_end_of_nbr(stacks, &_tmp);
 			}
 			else
 			{

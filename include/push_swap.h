@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 17:24:36 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 21:03:19 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_global
 void	parsing_error(void);
 void	cleanup_error(t_global *stacks);
 
-void	initialize_stacks(t_global *stacks, char *argv[]);
+void	populate_stacks(t_global *stacks, char *argv[]);
 
 /* ******************** OPERATIONS ******************** */
 void	method_switch(t_global *stacks);
@@ -86,10 +86,11 @@ void	rrr(t_global *global_stacks);
 /* ******************** UTILS ******************** */
 
 t_stack	*get_max_node(t_stack *stack);
-void	move_to_head(t_stack **stack, t_stack *node, int stack_size);
+void	mov_to_head(t_stack **stack, t_stack *node, int stack_size);
+void	mov_to_head_double(t_global *stacks, t_stack *node);
+void	calculate_costs(t_stack *stack, int stack_size);
 int		is_ordered(t_stack *lst);
 int		*get_max_arr_value(int *arr);
-t_stack	*get_by_index(t_stack *stack, int idx);
 int		get_index(t_stack *stack, t_stack *node);
 t_stack	*get_min_node(t_stack *stack);
 void	lstadd_back(t_stack **lst, t_stack *new);
@@ -97,8 +98,6 @@ void	lstadd_front(t_stack **lst, t_stack *new);
 void	lstclear(t_stack **lst);
 t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int number);
-int		lstsize(t_stack *lst);
-void	lstdelone(t_stack *lst);
 
 void	print_stack(t_global *global_stacks);
 

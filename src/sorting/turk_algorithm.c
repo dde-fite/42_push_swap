@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:41:26 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 17:16:09 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 20:39:08 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_stack	*seek_cheapest_combination(t_stack *stack_a)
 	int				_tmp;
 
 	acc = INT_MAX;
+	s_acc = NULL;
 	while (stack_a)
 	{
 		if ((stack_a->cost > 0 && stack_a->target->cost > 0)
@@ -85,7 +86,7 @@ static void	set_targets_b(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-static void	calculate_costs(t_stack *stack, int stack_size)
+void	calculate_costs(t_stack *stack, int stack_size)
 {
 	int	i;
 
@@ -98,29 +99,6 @@ static void	calculate_costs(t_stack *stack, int stack_size)
 			stack->cost = -(stack_size - i);
 		i++;
 		stack = stack->next;
-	}
-}
-
-static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
-{
-	while (node->cost || node->target->cost)
-	{
-		if ((node->cost > 0
-				&& node->target->cost > 0))
-			rr(global_stacks);
-		else if (node->cost < 0
-			&& node->target->cost < 0)
-			rrr(global_stacks);
-		else if (node->cost > 0)
-			ra(&global_stacks->stack_a);
-		else if (node->cost < 0)
-			rra(&global_stacks->stack_a);
-		else if (node->target->cost > 0)
-			rb(&global_stacks->stack_b);
-		else if (node->target->cost < 0)
-			rrb(&global_stacks->stack_b);
-		calculate_costs(global_stacks->stack_a, global_stacks->len_a);
-		calculate_costs(global_stacks->stack_b, global_stacks->len_b);
 	}
 }
 
@@ -140,10 +118,10 @@ void	turk_algorithm(t_global *stacks)
 	while (stacks->stack_b)
 	{
 		set_targets_b(stacks->stack_a, stacks->stack_b);
-		move_to_head(&stacks->stack_a, stacks->stack_b->target, stacks->len_a);
+		mov_to_head(&stacks->stack_a, stacks->stack_b->target, stacks->len_a);
 		pa(stacks);
 	}
 	while (!is_ordered(stacks->stack_a))
-		move_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
+		mov_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
 			stacks->len_a);
 }

@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 20:55:53 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 17:15:49 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 20:22:16 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	sort_three(t_stack **stack)
 
 static void	sort_five(t_global *stacks)
 {
-	move_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
+	mov_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
 		stacks->len_a);
 	pb(stacks);
-	move_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
+	mov_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
 		stacks->len_a);
 	pb(stacks);
 	sort_three(&stacks->stack_a);
