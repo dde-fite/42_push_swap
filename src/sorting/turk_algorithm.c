@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:41:26 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/18 21:57:37 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 15:49:58 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ static void	calculate_costs(t_stack *stack)
 
 static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 {
-	// print_stack(global_stacks);
 	while (node->cost || node->target->cost)
 	{
 		if ((node->cost > 0
@@ -121,7 +120,6 @@ static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 			rrb(&global_stacks->stack_b);
 		calculate_costs(global_stacks->stack_a);
 		calculate_costs(global_stacks->stack_b);
-		// print_stack(global_stacks);
 	}
 }
 

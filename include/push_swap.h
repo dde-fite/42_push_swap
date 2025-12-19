@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 20:48:22 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 15:44:54 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_global
 void	parsing_error(void);
 void	cleanup_error(t_global *stacks);
 
-int		initialize_stacks(t_global *stacks, char *argv[]);
+void	initialize_stacks(t_global *stacks, char *argv[]);
 
 /* ******************** OPERATIONS ******************** */
 void	method_switch(t_global *global_stacks);

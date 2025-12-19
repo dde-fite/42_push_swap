@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:17:46 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 21:33:54 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 15:43:24 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	normalize_input(t_global *global_stacks, char *str)
 	return (nbr);
 }
 
-int	initialize_stacks(t_global *stacks, char *argv[])
+void	initialize_stacks(t_global *stacks, char *argv[])
 {
 	t_stack	*_lst;
 	char	*_tmp;
@@ -72,5 +72,4 @@ int	initialize_stacks(t_global *stacks, char *argv[])
 		argv++;
 	}
 	stacks->len = lstsize(stacks->stack_a);
-	return (0);
 }
