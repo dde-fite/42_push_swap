@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:41:26 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 21:52:12 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/18 21:57:37 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,21 @@ static void	set_targets_b(t_stack *stack_a, t_stack *stack_b)
 
 static void	calculate_costs(t_stack *stack)
 {
-	int const		half_point = lstsize(stack) / 2;
+	int const		stack_size = lstsize(stack);
 	t_stack const	*_stack = stack;
 
 	while (stack)
 	{
 		stack->cost = get_index((t_stack *)_stack, stack);
-		if (stack->cost > half_point)
-			stack->cost = -(stack->cost - half_point);
+		if (stack->cost > stack_size / 2)
+			stack->cost = -(stack_size - stack->cost);
 		stack = stack->next;
 	}
 }
 
 static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 {
+	// print_stack(global_stacks);
 	while (node->cost || node->target->cost)
 	{
 		if ((node->cost > 0
@@ -120,6 +121,7 @@ static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 			rrb(&global_stacks->stack_b);
 		calculate_costs(global_stacks->stack_a);
 		calculate_costs(global_stacks->stack_b);
+		// print_stack(global_stacks);
 	}
 }
 
