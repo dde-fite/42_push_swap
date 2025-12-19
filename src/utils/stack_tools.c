@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:32:46 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 18:14:28 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 17:12:29 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,14 @@ int	is_ordered(t_stack *lst)
 	return (1);
 }
 
-void	move_to_head(t_stack **stack, t_stack *node)
+void	move_to_head(t_stack **stack, t_stack *node, int stack_size)
 {
-	int const	half_point = lstsize(*stack) / 2;
 	int			node_idx;
 
 	node_idx = get_index(*stack, node);
 	while (node_idx != 0)
 	{
-		if (node_idx < half_point)
+		if (node_idx < stack_size / 2)
 			ra(stack);
 		else
 			rra(stack);

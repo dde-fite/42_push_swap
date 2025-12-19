@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:41:26 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 16:35:48 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 17:16:09 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,27 +124,26 @@ static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 	}
 }
 
-void	turk_algorithm(t_global *global_stacks)
+void	turk_algorithm(t_global *stacks)
 {
-	pb(global_stacks);
-	pb(global_stacks);
-	while (global_stacks->len_a > 3)
+	pb(stacks);
+	pb(stacks);
+	while (stacks->len_a > 3)
 	{
-		calculate_costs(global_stacks->stack_a, global_stacks->len_a);
-		calculate_costs(global_stacks->stack_b, global_stacks->len_b);
-		set_targets_a(global_stacks->stack_a, global_stacks->stack_b);
-		mov_to_head_double(global_stacks,
-			seek_cheapest_combination(global_stacks->stack_a));
-		pb(global_stacks);
+		calculate_costs(stacks->stack_a, stacks->len_a);
+		calculate_costs(stacks->stack_b, stacks->len_b);
+		set_targets_a(stacks->stack_a, stacks->stack_b);
+		mov_to_head_double(stacks, seek_cheapest_combination(stacks->stack_a));
+		pb(stacks);
 	}
-	sort_three(&global_stacks->stack_a);
-	while (global_stacks->stack_b)
+	sort_three(&stacks->stack_a);
+	while (stacks->stack_b)
 	{
-		set_targets_b(global_stacks->stack_a, global_stacks->stack_b);
-		move_to_head(&global_stacks->stack_a, global_stacks->stack_b->target);
-		pa(global_stacks);
+		set_targets_b(stacks->stack_a, stacks->stack_b);
+		move_to_head(&stacks->stack_a, stacks->stack_b->target, stacks->len_a);
+		pa(stacks);
 	}
-	while (!is_ordered(global_stacks->stack_a))
-		move_to_head(&global_stacks->stack_a,
-			get_min_node(global_stacks->stack_a));
+	while (!is_ordered(stacks->stack_a))
+		move_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
+			stacks->len_a);
 }

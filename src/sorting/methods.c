@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 20:55:53 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 16:27:04 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 17:15:49 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,29 @@ void	sort_three(t_stack **stack)
 	}
 }
 
-static void	sort_five(t_global *global_stacks)
+static void	sort_five(t_global *stacks)
 {
-	move_to_head(&global_stacks->stack_a, get_min_node(global_stacks->stack_a));
-	pb(global_stacks);
-	move_to_head(&global_stacks->stack_a, get_min_node(global_stacks->stack_a));
-	pb(global_stacks);
-	sort_three(&global_stacks->stack_a);
-	pa(global_stacks);
-	pa(global_stacks);
+	move_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
+		stacks->len_a);
+	pb(stacks);
+	move_to_head(&stacks->stack_a, get_min_node(stacks->stack_a),
+		stacks->len_a);
+	pb(stacks);
+	sort_three(&stacks->stack_a);
+	pa(stacks);
+	pa(stacks);
 }
 
-void	method_switch(t_global *global_stacks)
+void	method_switch(t_global *stacks)
 {
-	if (is_ordered(global_stacks->stack_a))
+	if (is_ordered(stacks->stack_a))
 		return ;
-	if (global_stacks->len_a == 2)
-		sort_two(&global_stacks->stack_a);
-	else if (global_stacks->len_a == 3)
-		sort_three(&global_stacks->stack_a);
-	else if (global_stacks->len_a == 5)
-		sort_five(global_stacks);
+	if (stacks->len_a == 2)
+		sort_two(&stacks->stack_a);
+	else if (stacks->len_a == 3)
+		sort_three(&stacks->stack_a);
+	else if (stacks->len_a == 5)
+		sort_five(stacks);
 	else
-		turk_algorithm(global_stacks);
+		turk_algorithm(stacks);
 }
