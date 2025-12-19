@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 15:44:54 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:19:34 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct s_global
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		len;
+	int		len_a;
+	int		len_b;
 }	t_global;
 
 /* ******************** ERROR HANDLING ******************** */
