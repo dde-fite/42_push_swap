@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:17:46 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 15:43:24 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:20:54 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	initialize_stacks(t_global *stacks, char *argv[])
 
 	stacks->stack_a = NULL;
 	stacks->stack_b = NULL;
+	stacks->len_a = 0;
+	stacks->len_b = 0;
 	while (*argv)
 	{
 		_tmp = *argv;
@@ -55,6 +57,7 @@ void	initialize_stacks(t_global *stacks, char *argv[])
 				if (!_lst)
 					cleanup_error(stacks);
 				lstadd_back(&stacks->stack_a, _lst);
+				stacks->len_a++;
 				if (*_tmp == '-' || *_tmp == '+')
 					_tmp++;
 				while (*_tmp && ft_isdigit(*_tmp))
@@ -71,5 +74,4 @@ void	initialize_stacks(t_global *stacks, char *argv[])
 		}
 		argv++;
 	}
-	stacks->len = lstsize(stacks->stack_a);
 }

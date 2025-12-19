@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:41:26 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 15:49:58 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:35:48 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static t_stack	*seek_cheapest_combination(t_stack *stack_a)
 	acc = INT_MAX;
 	while (stack_a)
 	{
-		_tmp = 0;
 		if ((stack_a->cost > 0 && stack_a->target->cost > 0)
 			|| (stack_a->cost < 0 && stack_a->target->cost < 0))
 			_tmp = ft_maxnbr(ft_abs(stack_a->cost),
@@ -86,16 +85,18 @@ static void	set_targets_b(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-static void	calculate_costs(t_stack *stack)
+static void	calculate_costs(t_stack *stack, int stack_size)
 {
-	int const		stack_size = lstsize(stack);
-	t_stack const	*_stack = stack;
+	int	i;
 
+	i = 0;
 	while (stack)
 	{
-		stack->cost = get_index((t_stack *)_stack, stack);
-		if (stack->cost > stack_size / 2)
-			stack->cost = -(stack_size - stack->cost);
+		if (i < stack_size / 2)
+			stack->cost = i;
+		else
+			stack->cost = -(stack_size - i);
+		i++;
 		stack = stack->next;
 	}
 }
@@ -118,8 +119,8 @@ static void	mov_to_head_double(t_global *global_stacks, t_stack *node)
 			rb(&global_stacks->stack_b);
 		else if (node->target->cost < 0)
 			rrb(&global_stacks->stack_b);
-		calculate_costs(global_stacks->stack_a);
-		calculate_costs(global_stacks->stack_b);
+		calculate_costs(global_stacks->stack_a, global_stacks->len_a);
+		calculate_costs(global_stacks->stack_b, global_stacks->len_b);
 	}
 }
 
@@ -127,10 +128,10 @@ void	turk_algorithm(t_global *global_stacks)
 {
 	pb(global_stacks);
 	pb(global_stacks);
-	while (lstsize(global_stacks->stack_a) > 3)
+	while (global_stacks->len_a > 3)
 	{
-		calculate_costs(global_stacks->stack_a);
-		calculate_costs(global_stacks->stack_b);
+		calculate_costs(global_stacks->stack_a, global_stacks->len_a);
+		calculate_costs(global_stacks->stack_b, global_stacks->len_b);
 		set_targets_a(global_stacks->stack_a, global_stacks->stack_b);
 		mov_to_head_double(global_stacks,
 			seek_cheapest_combination(global_stacks->stack_a));

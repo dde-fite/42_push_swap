@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 20:55:53 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/17 20:48:03 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:27:04 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	method_switch(t_global *global_stacks)
 {
 	if (is_ordered(global_stacks->stack_a))
 		return ;
-	if (global_stacks->len == 2)
+	if (global_stacks->len_a == 2)
 		sort_two(&global_stacks->stack_a);
-	else if (global_stacks->len == 3)
+	else if (global_stacks->len_a == 3)
 		sort_three(&global_stacks->stack_a);
-	else if (global_stacks->len == 5)
+	else if (global_stacks->len_a == 5)
 		sort_five(global_stacks);
 	else
 		turk_algorithm(global_stacks);
