@@ -1,20 +1,20 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "build_push_swap",
-            "command": "make debug",
-            "options": {
-                "cwd": "${workspaceFolder}/"
-            },
-            "problemMatcher": ["$gcc"],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "build_push_swap",
+      "command": "make bonus",
+      "options": {
+        "cwd": "${workspaceFolder}/"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
 }
 
 // {

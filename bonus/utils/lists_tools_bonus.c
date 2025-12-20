@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lists_tools.c                                      :+:      :+:    :+:   */
+/*   lists_tools_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:24:11 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 21:47:28 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/20 01:19:48 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ t_stack	*lstnew(int number)
 	if (!lst)
 		return (NULL);
 	lst->number = number;
-	lst->cost = 0;
-	lst->target = NULL;
 	lst->next = NULL;
 	return (lst);
 }
