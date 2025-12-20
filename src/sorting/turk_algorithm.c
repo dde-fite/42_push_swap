@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:41:26 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 20:39:08 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/20 23:56:28 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static t_stack	*seek_cheapest_combination(t_stack *stack_a)
 static void	set_targets_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack const	*_stack_b = stack_b;
+	t_stack const	*max_node = get_max_node((t_stack *)_stack_b);
 	t_stack			*acc;
 
 	while (stack_a)
@@ -57,7 +58,7 @@ static void	set_targets_a(t_stack *stack_a, t_stack *stack_b)
 		if (acc && acc->number < stack_a->number)
 			stack_a->target = acc;
 		else
-			stack_a->target = get_max_node((t_stack *)_stack_b);
+			stack_a->target = (t_stack *)max_node;
 		stack_a = stack_a->next;
 	}
 }
@@ -65,6 +66,7 @@ static void	set_targets_a(t_stack *stack_a, t_stack *stack_b)
 static void	set_targets_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack const	*_stack_a = stack_a;
+	t_stack const	*min_node = get_min_node((t_stack *)_stack_a);
 	t_stack			*acc;
 
 	while (stack_b)
@@ -81,7 +83,7 @@ static void	set_targets_b(t_stack *stack_a, t_stack *stack_b)
 		if (acc && acc->number > stack_b->number)
 			stack_b->target = acc;
 		else
-			stack_b->target = get_min_node((t_stack *)_stack_a);
+			stack_b->target = (t_stack *)min_node;
 		stack_b = stack_b->next;
 	}
 }
