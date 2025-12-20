@@ -6,7 +6,7 @@
 #    By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 17:35:03 by dde-fite          #+#    #+#              #
-#    Updated: 2025/12/20 02:03:43 by dde-fite         ###   ########.fr        #
+#    Updated: 2025/12/20 23:16:47 by dde-fite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC_FILES		= main.c parsing.c \
 					operations/swap.c operations/push.c operations/rotate.c operations/revrotate.c \
 					sorting/methods.c sorting/turk_algorithm.c sorting/mov_to_head.c
 SRCB_FILES		= main_bonus.c arg_parsing_bonus.c \
-					utils/lists_tools_bonus.c utils/lstsize_bonus.c utils/print_stacks_bonus.c utils/stack_tools_bonus.c \
+					utils/lists_tools_bonus.c utils/lstsize_bonus.c utils/stack_tools_bonus.c \
 					helpers/error_handling_bonus.c \
 					operations/do_operation_bonus.c operations/instructions_bonus.c \
 
@@ -69,9 +69,9 @@ BAR_LEN			:= 100
 
 # ********************************** RULES  ********************************** #
 
-all: ${NAME}
+all: ${LIBFT_FOLDER}/libft.a ${NAME}
 
-${NAME}: ${LIBFT_FOLDER}/libft.a
+${NAME}:
 	@echo -e "\n${PURPLE}"
 	@echo "                         __                                                        "
 	@echo "                        /\ \                                                       "
@@ -141,10 +141,10 @@ debug: ${LIBFT_FOLDER}/libft.a ${SRC}
 	@echo -e "${GREEN}Process completed :)${RESET}\n"
 
 
-bonus: .bonus
+bonus: ${LIBFT_FOLDER}/libft.a .bonus
 	@echo "Bonus done."
 
-.bonus: ${LIBFT_FOLDER}/libft.a
+.bonus:
 	@echo -e "\n${PURPLE}"
 	@echo "                         __                                                        "
 	@echo "                        /\ \                                                       "

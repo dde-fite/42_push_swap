@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+.bonus
 
 # Object files
 *.o
@@ -37,6 +38,7 @@
 *.hex
 push_swap
 checker
+checker_linux
 
 # Debug files
 *.dSYM/

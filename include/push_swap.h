@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 17:32:34 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/19 21:03:19 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/20 23:27:29 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf.h"
-// # include <stdlib.h>
-// # include <string.h>
-// # include <stdint.h>
-// # include <limits.h>
-// # include <unistd.h>
-// # include <stdio.h>
 
 # define ERROR_MESSAGE "Error\n"
 # define SWAP_A "sa\n"
@@ -58,18 +52,18 @@ typedef struct s_global
 	int		len_b;
 }	t_global;
 
-/* ******************** ERROR HANDLING ******************** */
-
-void	parsing_error(void);
-void	cleanup_error(t_global *stacks);
+/* ******************************** PARSING ********************************* */
 
 void	populate_stacks(t_global *stacks, char *argv[]);
 
-/* ******************** OPERATIONS ******************** */
-void	method_switch(t_global *stacks);
-void	turk_algorithm(t_global *stacks);
+/* ******************************** SORTING --******************************* */
 
+void	method_switch(t_global *stacks);
 void	sort_three(t_stack **stack);
+void	turk_algorithm(t_global *stacks);
+void	calculate_costs(t_stack *stack, int stack_size);
+
+/* ******************************* OPERATIONS ******************************* */
 
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
@@ -83,22 +77,24 @@ void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_global *global_stacks);
 
-/* ******************** UTILS ******************** */
+/* ********************************* UTILS ********************************** */
 
+int		is_ordered(t_stack *lst);
+int		get_index(t_stack *stack, t_stack *node);
+t_stack	*get_min_node(t_stack *stack);
 t_stack	*get_max_node(t_stack *stack);
 void	mov_to_head(t_stack **stack, t_stack *node, int stack_size);
 void	mov_to_head_double(t_global *stacks, t_stack *node);
-void	calculate_costs(t_stack *stack, int stack_size);
-int		is_ordered(t_stack *lst);
-int		*get_max_arr_value(int *arr);
-int		get_index(t_stack *stack, t_stack *node);
-t_stack	*get_min_node(t_stack *stack);
 void	lstadd_back(t_stack **lst, t_stack *new);
 void	lstadd_front(t_stack **lst, t_stack *new);
 void	lstclear(t_stack **lst);
 t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int number);
+// void	print_stack(t_global *global_stacks); // FOR DEBUGGING
 
-void	print_stack(t_global *global_stacks);
+/* ***************************** ERROR HANDLING ***************************** */
+
+void	parsing_error(void);
+void	cleanup_error(t_global *stacks);
 
 #endif

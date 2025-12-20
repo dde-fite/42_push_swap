@@ -6,7 +6,7 @@
 /*   By: dde-fite <dde-fite@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 01:43:11 by dde-fite          #+#    #+#             */
-/*   Updated: 2025/12/20 00:51:18 by dde-fite         ###   ########.fr       */
+/*   Updated: 2025/12/20 23:26:02 by dde-fite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,18 @@ typedef struct s_global
 	int		len;
 }	t_global;
 
-/* ******************** ERROR HANDLING ******************** */
-
-void	parsing_error(void);
-void	cleanup_error(t_global *stacks);
-
+/* ******************************** PARSING ********************************* */
 void	populate_stacks(t_global *stacks, char *argv[]);
 void	do_instructions(t_global *stacks);
 
-/* ******************** OPERATIONS ******************** */
+/* ******************************* OPERATIONS ******************************* */
 
 int		swap(t_stack **stack);
 int		push(t_stack **from, t_stack **dest);
 int		revrotate(t_stack **stack);
 int		rotate(t_stack **stack);
 
-/* ******************** UTILS ******************** */
+/* ********************************* UTILS ********************************** */
 
 int		lstsize(t_stack *lst);
 int		is_ordered(t_stack *lst);
@@ -76,6 +72,9 @@ void	lstclear(t_stack **lst);
 t_stack	*lstlast(t_stack *lst);
 t_stack	*lstnew(int number);
 
-void	print_stack(t_global *global_stacks);
+/* ***************************** ERROR HANDLING ***************************** */
+
+void	parsing_error(void);
+void	cleanup_error(t_global *stacks);
 
 #endif
