@@ -42,7 +42,56 @@ To achieve a 100% score, the algorithm must meet the following criteria:
 
 Therefore, it is necessary to constantly check the number of operations to ensure that the limits are not exceeded.
 
+### Program flow
+
+![Flow diagram of push_swap](media/push_swap_flow.svg)
+
 ## Instructions
+### Requirements
+The source code and Makefile are designed for use in a UNIX-like environment; any use outside this scope does not guarantee correct or efficient operation.
+- Make
+- GCC
+
+### Installation
+- Clone the repository recursively to download the submodules.
+``` bash
+git clone --recursive https://github.com/dde-fite/42_push_swap.git
+```
+
+- For the general section
+``` bash
+make
+```
+
+- For the bonus section.
+``` bash
+make bonus
+```
+
+### Usage
+After compilation is complete, the push_swap file will appear. Run it with the numbers you want to sort as an argument.
+
+``` bash
+./push_swap 1 2 3 4 5 6 7 8 9 10
+```
+
+To call the bonus, you must pass the operations to be checked by stdint and the disordered numbers as arguments.
+
+From the terminal, you can use it by executing a push_swap and calling the checker with a pipe (|).
+
+``` bash
+./push_swap 1 2 3 4 5 6 7 8 9 10 | ./checker 1 2 3 4 5 6 7 8 9 10
+```
+
+## Testings
+
+In the repository, you can find a small script to quickly test push_swap.
+
+It works by measuring the operations needed to sort 100 numbers and then running it through the checker five times, and then doing it again with 500 numbers another five times.
+
+```fish
+./test.fish
+```
 
 ## Resources
 - [(YT) All the Sorting Algorithms - Boot dev](https://www.youtube.com/watch?v=GMV7ycKZ-mM)
@@ -57,60 +106,6 @@ Therefore, it is necessary to constantly check the number of operations to ensur
 
 ### How AI was used
 For this project, I have chosen to keep AI out of the picture so that it does not interfere with my understanding of the concepts of algorithmics.
-
-
-## Testings
-
-```fish
-set args (seq -214748 214748 | sort -R | head -n 100); ./push_swap $args | wc -l
-```
-
-## Features
-- Implements all basic `printf` conversions.
-- Fully supports all bonus features:
-  - Complete handling of flags: `-`, `0`, `.`, field width, `#`, `+`, and space.
-  - All possible flag combinations for each conversion.
-
-## Requirements
-The functions and Makefile are designed for use in a UNIX-like environment; any use outside this scope does not guarantee correct or efficient operation.
-- Make
-- GCC
-
-## Usage
-
-### Compiling
-- Clone the repository recursively to download the submodules.
-``` bash
-git clone --recursive https://github.com/dde-fite/42_ft_printf.git
-```
-
-- For the general section
-``` bash
-make
-```
-
-- For the bonus section.
-``` bash
-make bonus
-```
-
-### Using it as a static library
-After installation is complete, the libft.a file will appear. This static library can be used in any project.s
-
-You can include the library by including libft.h and libft.a as in the example:
-
-- First include the header file in your C or header files.
-``` h
-#include "ft_printf.h"
-
-// or for bonus
-#include "ft_printf_bonus.h"
-```
-
-- Then compile using the library
-``` bash
-gcc main.c libftprintf.a
-```
 
 ## Got any suggestions?
 If you find any errors or have any new ideas for improving this repository, feel free to open an Issue or Pull Request, or contact me at my email address: nora@defitero.com
