@@ -6,7 +6,8 @@
 </p>
 
 <p align="center">
-	<img alt="Static Badge" src="https://img.shields.io/badge/125/100-gree?logo=42&logoColor=white">
+	<img alt="score 125/100" src="https://img.shields.io/badge/125/100-gree?logo=42&logoColor=white">
+	<img src="https://codestats.cloud.defitero.com/api/badge/nora.defitero/interval:any/project:42_push_swap">
 </p>
 
 <p align="center">
